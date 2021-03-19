@@ -22,7 +22,6 @@ source "amazon-ebs" "example" {
   ssh_username = "ubuntu"
 }
 
-
 build {
   sources = ["source.amazon-ebs.example"]
 
@@ -35,5 +34,13 @@ build {
   }
   provisioner "shell" {
     script = "./example.sh"
+  }
+
+  provisioner "shell" {
+    inline = [
+      "sleep 30",
+      "sudo apt-get update",
+      "sudo apt-get install -y redis-server",
+    ]
   }
 }
