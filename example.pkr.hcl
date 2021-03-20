@@ -40,7 +40,13 @@ build {
     inline = [
       "sleep 30",
       "sudo apt-get update",
+      "sudo apt-get install -y unzip",
       "sudo apt-get install -y redis-server",
     ]
+  }
+
+  provisioner "inspec" {
+    profile = "./test"
+    extra_arguments = ["--reporter", "cli", "junit:TestResults.xml"]
   }
 }
