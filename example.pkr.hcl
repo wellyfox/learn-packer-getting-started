@@ -48,6 +48,6 @@ build {
   provisioner "inspec" {
     profile = "./test"
     inspec_env_vars = [ "CHEF_LICENSE=accept"]
-    extra_arguments = ["--reporter", "cli", "junit:TestResults.xml"]
+    extra_arguments = ["--reporter", "cli", "junit:TestResults-1.xml", "html2:TestResults-1.html"]
   }
 }
